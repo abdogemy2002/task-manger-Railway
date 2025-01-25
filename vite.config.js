@@ -12,4 +12,7 @@ export default defineConfig({
     outDir: 'dist', // تأكد من مسار الإخراج
   },
   base: './', // لضمان تحميل الملفات بشكل صحيح
+  preview: {
+    allowedHosts: ['task-manger-railway-production.up.railway.app'], // أضف الهوست هنا
+  },
 });
