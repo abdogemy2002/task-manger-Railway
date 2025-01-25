@@ -1,18 +1,20 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: parseInt(process.env.PORT) || 4173, // السماح لريلوى بتحديد البورت
-    host: '0.0.0.0', // يضمن أن التطبيق متاح على الشبكة العامة
+    port: parseInt(process.env.PORT) || 4173,
+    host: '0.0.0.0',
+    proxy: {
+      '/api': 'http://localhost:3000',
+    },
   },
   build: {
-    outDir: 'dist', // تأكد من مسار الإخراج
+    outDir: 'dist',
   },
-  base: './', // لضمان تحميل الملفات بشكل صحيح
+  base: './',
   preview: {
-    allowedHosts: ['task-manger-railway-production.up.railway.app'], // أضف الهوست هنا
+    allowedHosts: ['task-manger-railway-production.up.railway.app'],
   },
 });
